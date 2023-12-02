@@ -7,6 +7,7 @@ import HooksCounter4 from './components/HooksCounter4';
 import HooksEffect from './components/HooksEffect';
 import HooksEffect2 from './components/HooksEffect2';
 import HooksEffect3 from './components/HooksEffect3';
+import HooksEffect4 from './components/HooksEffect4';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       {/* <HooksCounter4/> */}
       {/* <HooksEffect /> */}
       {/* <HooksEffect2 /> */}
-      <HooksEffect3/>
+      {/* <HooksEffect3/> */}
+      <HooksEffect4/>
     </div>
   );
 }
