@@ -1,16 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css';
+import NewTodoForm from './NewTodoForm';
+import TodosList from './TodosList';
 
 function App() {
-  const [newItem, setNewItem] = useState('')
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState(()=>{
+    const localValue = localStorage.getItem("ITEMS")
+    if(localValue==null) return []
+    return JSON.parse(localValue)
+  })
+  useEffect(()=>{
+    localStorage.setItem("ITEMS", JSON.stringify(todos))
+  }, [todos])
 
-  function handleSubmit(e) {
-    e.preventDefault()
-
-    setTodos((currentTodos)=>[...currentTodos, {id: crypto.randomUUID(), title: newItem, completed: false}])
-
-    setNewItem('')
+  function addTodo(title) {
+    setTodos((currentTodos)=>[...currentTodos, {id: crypto.randomUUID(), title: title, completed: false}])
   }
 
   function toggleTodo(id, completed) {
@@ -32,26 +36,9 @@ function App() {
   
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>New Item</label>
-          <input type="text" id="item" value={newItem} onChange={(e)=>setNewItem(e.currentTarget.value)} />
-        </div>
-        <button>Add</button>
-      </form>
+      <NewTodoForm onSubmit={addTodo}/>
       <h1>Todo list</h1>
-      <ul>
-        {todos.length == 0 && 'No todos'}
-        {todos.map(todo=>{
-          return <li key={todo.id}>
-            <label>
-              <input type="checkbox" checked={todo.completed} onChange={e=>toggleTodo(todo.id, e.target.checked)}/>
-              {todo.title}
-            </label>
-            <button onClick={()=>deleteTodo(todo.id)}>Delete</button>
-          </li>
-        })}
-      </ul>
+      <TodosList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
     </>
   );
 }
