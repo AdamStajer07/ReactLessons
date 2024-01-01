@@ -1,1 +1,1 @@
-First lesson about React Ref
+Three lessons about React Ref
