@@ -1,1 +1,1 @@
-Lessons about higher order components in React
+Lessons about higher-order-components in React
