@@ -4,7 +4,7 @@ import HoverCounter from "./components/HoverCounter";
 function App() {
   return (
     <>
-      <ClickCounter/>
+      <ClickCounter name="Adam"/>
       <HoverCounter/>
     </>
   );
