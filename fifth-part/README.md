@@ -1,3 +1,3 @@
 3 Lessons about higher-order-components in React
 2 Lessons about render props in React
-2 Lessons about context in React
+3 Lessons about context in React
