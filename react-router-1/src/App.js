@@ -7,6 +7,9 @@ import { NoMatch } from "./components/NoMatch";
 import { Products } from "./components/Products";
 import { Featured } from "./components/Featured";
 import { New } from "./components/New";
+import { Users } from "./components/Users";
+import { UserDetails } from "./components/UserDetails";
+import { Admin } from "./components/Admin";
 // import './index.css';
 
 function App() {
@@ -21,6 +24,10 @@ function App() {
           <Route index element={<Featured/>} />
           <Route path="featured" element={<Featured/>}/>
           <Route path="new" element={<New/>}/>
+        </Route>
+        <Route path="users" element={<Users/>}>
+          <Route path=":userId" element={<UserDetails/>} />
+          <Route path="admin" element={<Admin/>} />
         </Route>
         <Route path="*" element={<NoMatch/>}/>
       </Routes>
