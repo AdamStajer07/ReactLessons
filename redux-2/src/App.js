@@ -3,12 +3,14 @@ import store from './redux/store'
 import CakeContainer from './components/CakeContainer';
 import HooksCakeContainer from './components/HooksCakeContainer';
 import IceCreamContainer from './components/IceCreamContainer';
+import DonutContainer from './components/DonutContainer';
 
 function App() {
   return (
     <Provider store={store}>
       <HooksCakeContainer />
       <IceCreamContainer />
+      <DonutContainer />
       {/* <CakeContainer /> */}
     </Provider>
   );
