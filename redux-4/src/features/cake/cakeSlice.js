@@ -1,21 +1,21 @@
-import createSlice from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    numOfCakes: 10
+    numOfCakes: 20
 }
 
 const cakeSlice = createSlice({
     name: 'cake',
     initialState,
     reducers: {
-        ordered: (state) => {
+        ordered: state => {
             state.numOfCakes--
         },
         restocked: (state, action) => {
-            state.numOfCakes += action.payload
+            state.numOfCakes += parseInt(action.payload)
         }
     }
 })
 
 export default cakeSlice.reducer
-module.exports.icecreamActions = cakeSlice.actions
+export const { ordered, restocked } = cakeSlice.actions
