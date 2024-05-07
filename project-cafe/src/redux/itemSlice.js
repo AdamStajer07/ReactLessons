@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     items: [],
-    value: 0
+    totalValue: 0
 }
 
 const itemSlice = createSlice({
@@ -10,8 +10,12 @@ const itemSlice = createSlice({
     initialState,
     reducers: {
         ordered: (state, action) => {
-            state.items.push(action.payload.name)
-            state.value += (action.payload.value * action.payload.count)
+            // if(state.items.includes(action.payload.name)) {
+            //     const newItems = state.items.filter(el => el.name != action.payload.name)
+            //     state.items = [...newItems, {name: action.payload.name, value:  + (action.payload.value * action.payload.count), count:}]
+            // }
+            state.items.push({ name: action.payload.name, value: action.payload.value * action.payload.count, count: action.payload.count })
+            state.totalValue += (action.payload.value * action.payload.count)
         }
     }
 })
