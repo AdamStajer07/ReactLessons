@@ -5,10 +5,10 @@ function Home() {
   const items = useSelector(state=>state.item.items)
   return (
     <>
-      {items.map(el => {
+      {/* {items.map(el => {
         const {name, value} = el
         return <p>{name}: {value}</p>
-      })}
+      })} */}
     </>
   )
 }

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { useState } from 'react'
 
 const initialState = {
     items: [],
@@ -10,12 +11,29 @@ const itemSlice = createSlice({
     initialState,
     reducers: {
         ordered: (state, action) => {
-            // if(state.items.includes(action.payload.name)) {
-            //     const newItems = state.items.filter(el => el.name != action.payload.name)
-            //     state.items = [...newItems, {name: action.payload.name, value:  + (action.payload.value * action.payload.count), count:}]
-            // }
-            state.items.push({ name: action.payload.name, value: action.payload.value * action.payload.count, count: action.payload.count })
-            state.totalValue += (action.payload.value * action.payload.count)
+            const { name, value, count } = action.payload
+            let bool = true
+
+            state.totalValue += (value * count)
+            const newState = state.items.map(el => {
+                const { name: elName, value: elValue, count: elCount } = el
+                if (elName == name) {
+                    console.log(elCount)
+                    console.log(count)
+                    bool = false
+                    const newCount = (elCount + parseInt(count))
+                    const newValue = value * newCount
+                    const newElement = { name: elName, value: newValue, count: newCount }
+                    return newElement
+                }
+                return el
+            })
+            if (bool) {
+                state.items.push({ name: name, value: value * count, count: count })
+            }
+            else {
+                state.items = newState
+            }
         }
     }
 })
