@@ -6,7 +6,7 @@ function Cart() {
     const totalValue = useSelector(state=>state.item.totalValue)
   return (
     <>
-        {items && items.map((item, index) => {
+        {items.length > 0 ? items.map((item, index) => {
             const {name, value, count} = item
             return <div key={index}>
                 <h1>{name}</h1>
@@ -14,9 +14,11 @@ function Cart() {
                 <p>Count: {count}</p>
                 <p>Total value: <b>{value}</b></p>
             </div>
-        })}
-        <hr />
-        {totalValue != 0 && <p><b>Total Value: {totalValue}</b></p>}
+        }) : <p>Your cart is empty</p>}
+        {totalValue != 0 && <div>
+          <hr />  
+          <p><b>Total Value: {totalValue}</b></p>
+          </div>}
     </>
   )
 }

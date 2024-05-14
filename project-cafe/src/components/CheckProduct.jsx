@@ -8,10 +8,9 @@ function CheckProduct({name, value}) {
         navigate(`/product/${name}/${value}`)
     }
   return (
-    <>
-        <h1>{name}</h1>
-        <button onClick={eventHandling}>zamów</button>
-    </>
+    <div className='check-product' style={{backgroundImage: `url('../img/${name}.jpg'`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`}} onClick={eventHandling}>
+        <h1 className='check-product__title'>{name}</h1>
+    </div>
   )
 }
 

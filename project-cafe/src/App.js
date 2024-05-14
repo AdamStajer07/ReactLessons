@@ -7,7 +7,7 @@ import Cart from './components/Cart';
 
 function App() {
   return (
-    <>
+    <body className='container'>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -15,7 +15,7 @@ function App() {
         <Route path='/cart' element={<Cart />} />
         <Route path='/product/:itemName/:itemValue' element={<SingleProduct />} />
       </Routes>
-    </>
+    </body>
   );
 }
 

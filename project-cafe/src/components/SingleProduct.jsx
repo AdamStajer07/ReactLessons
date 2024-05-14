@@ -14,13 +14,13 @@ function SingleProduct() {
     }
     
     return (
-      <>
-        <h1>{itemName}</h1>
+      <div className='single-product'>
+        <h1 className='single-product__title'>{itemName}</h1>
 
-        <p>{itemValue}zł</p>
-        <input type="number" value={count} onChange={(e)=>setCount(e.target.value)}/>
-        <button onClick={eventHandling}>Dodaj</button>
-      </>
+        <p className='single-product__item-value'>{itemValue}zł</p>
+        <input type="number" value={count} onChange={(e)=>setCount(e.target.value)} className='single-product__count-input'/>
+        <button onClick={eventHandling} className='single-product__btn'>Dodaj</button>
+      </div>
     )
 }
 
