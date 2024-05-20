@@ -9,18 +9,30 @@
   overflow: hidden;
 }
 .navbar {
-  min-height: 50px;
-  background-color: gray;
-  width: 100vw;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-}
-.navbar div {
-  font-size: 2rem;
-  padding: 1rem;
-  font-weight: bold;
-  cursor: pointer;
+  min-height: 50px;
+  background-color: rgb(185, 185, 185);
+  width: 100vw;
+  &__logo {
+    margin: 0 2rem;
+    width: 100px;
+    scale: 1.2;
+    cursor: pointer;
+  }
+  &__container {
+    display: flex;
+    justify-content: center;
+    margin: 0 2rem;
+  }
+  &__item {
+    font-size: 2rem;
+    margin: 0 2rem;
+    padding: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
 }
 .box {
   display: flex;
@@ -126,5 +138,43 @@
       background-color: rgb(239, 239, 239);
 
     }
+  }
+}
+.cart {
+  width: 50vw;
+  margin: 2rem auto;
+  background-color: rgb(248, 248, 248);
+  border-radius: 20px;
+  &__empty {
+    width: 100%;
+    padding: 1rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+  &__container {
+    margin: .5rem 7rem;
+    border-bottom: 2px solid black;
+  }
+  &__title {
+    text-align: center;
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+  }
+  &__description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__value, &__count, &__sum-of-value {
+    padding: 0.5rem 2rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  &__total-value {
+    text-align: right;
+    padding: .5rem 7rem;
+    font-size: 1.5rem;
   }
 }

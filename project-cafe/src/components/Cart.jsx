@@ -5,21 +5,23 @@ function Cart() {
     const items = useSelector(state=>state.item.items)
     const totalValue = useSelector(state=>state.item.totalValue)
   return (
-    <>
+    <div className='cart'>
         {items.length > 0 ? items.map((item, index) => {
             const {name, value, count} = item
-            return <div key={index}>
-                <h1>{name}</h1>
-                <p>Value for one: {value/count}</p>
-                <p>Count: {count}</p>
-                <p>Total value: <b>{value}</b></p>
+            return <div key={index} className='cart__container'>
+                <h1 className='cart__title'>{name}</h1>
+                <div className='cart__description'>
+                  <p className='cart__value'>Value for one: {value/count}</p>
+                  <p className='cart__count'>Count: {count}</p>
+                  <p className='cart__sum-of-value'>Total value: {value}</p>
+                </div>
             </div>
-        }) : <p>Your cart is empty</p>}
+        }) : <p className='cart__empty'>Your cart is empty :(</p>}
         {totalValue != 0 && <div>
-          <hr />  
-          <p><b>Total Value: {totalValue}</b></p>
+          {/* <hr />   */}
+          <p className='cart__total-value'><b>Total Value: {totalValue}</b></p>
           </div>}
-    </>
+    </div>
   )
 }
 

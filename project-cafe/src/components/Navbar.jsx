@@ -5,9 +5,12 @@ function Navbar() {
   const navigate = useNavigate()
   return (
     <nav className='navbar'>
-        <div onClick={()=>navigate('/')}>Home</div>
-        <div onClick={()=>navigate('/products')}>Products</div>
-        <div onClick={()=>navigate('/cart')}>Cart</div>
+        <img className='navbar__logo' src="/img/logo.png" alt="logo" onClick={()=>navigate('/')}/>
+        <div className='navbar__container'>
+          {/* <div className='navbar__item' onClick={()=>navigate('/')}>Home</div> */}
+          <div className='navbar__item' onClick={()=>navigate('/products')}>Products</div>
+          <div className='navbar__item' onClick={()=>navigate('/cart')}>Cart</div>
+        </div>
     </nav>
   )
 }
