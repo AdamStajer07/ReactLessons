@@ -5,10 +5,11 @@ import Products from './components/Products';
 import SingleProduct from './components/SingleProduct';
 import Cart from './components/Cart';
 import NoMatch from './components/NoMatch';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <body className='container'>
+    <div className='container'>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -17,7 +18,8 @@ function App() {
         <Route path='/product/:itemName/:itemValue' element={<SingleProduct />} />
         <Route path='*' element={<NoMatch/>} />
       </Routes>
-    </body>
+      <Footer />
+    </div>
   );
 }
 

@@ -7,9 +7,7 @@ import Table from './components/Table';
 function App() {
   return (
     <div className="App">
-      <ParentComp/>
-      {/* <Table/> */}
-      {/* <FragmentDemo /> */}
+      <h1>Hello World</h1>
     </div>
   );
 }

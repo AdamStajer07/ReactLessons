@@ -18,6 +18,10 @@ function Home() {
         <h1 className='home__title'>Our products</h1>
         <button className="home__btn" onClick={()=>navigate('/products')}>See our products</button>
       </div>
+      <div className="home__contact-container">
+        <h1 className="home__title">Contact</h1>
+        <p className="home__contact">Do you ask something? Write here: <br /><span className="home__mail">contact@sweetcafe.com</span></p>
+      </div>
     </div>
   )
 }
