@@ -1,9 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import {clear} from '../redux/itemSlice'
 
 function Cart() {
     const items = useSelector(state=>state.item.items)
     const totalValue = useSelector(state=>state.item.totalValue)
+    const dispatch = useDispatch()
   return (
     <div className='cart'>
         {items.length > 0 ? items.map((item, index) => {
@@ -17,8 +19,8 @@ function Cart() {
                 </div>
             </div>
         }) : <p className='cart__empty'>Your cart is empty :(</p>}
-        {totalValue != 0 && <div>
-          {/* <hr />   */}
+        {totalValue != 0 && <div className='cart__right-div'>
+          <button className='cart__btn' onClick={()=>dispatch(clear())}>Clear cart</button>
           <p className='cart__total-value'><b>Total Value: {totalValue}</b></p>
           </div>}
     </div>

@@ -34,9 +34,13 @@ const itemSlice = createSlice({
             else {
                 state.items = newState
             }
+        },
+        clear: state => {
+            state.items = []
+            state.totalValue = 0
         }
     }
 })
 
 export default itemSlice.reducer
-export const { ordered } = itemSlice.actions
+export const { ordered, clear } = itemSlice.actions
