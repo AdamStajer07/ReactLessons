@@ -1,5 +1,6 @@
 import './App.css';
 import Icons from './component/Icons';
+import ReactCountup from './component/ReactCountup';
 import ReactMod from './component/ReactMod';
 import ReactTippy from './component/ReactTippy';
 import ToastNotifications from './component/ToastNotifications';
@@ -10,7 +11,8 @@ function App() {
     // <Icons/>
     // <ToastNotifications/>
     // <ReactMod />
-    <ReactTippy/>
+    // <ReactTippy/>
+    <ReactCountup/>
   );
 }
 
