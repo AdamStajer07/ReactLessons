@@ -5,6 +5,7 @@ import ReactCreditCard from './component/ReactCreditCard';
 import ReactDatepicker from './component/ReactDatepicker';
 import ReactIdleTimer from './component/ReactIdleTimer';
 import ReactMod from './component/ReactMod';
+import ReactSpinner from './component/ReactSpinner';
 import ReactTippy from './component/ReactTippy';
 import ReactVideoPlayer from './component/ReactVideoPlayer';
 import ToastNotifications from './component/ToastNotifications';
@@ -21,7 +22,8 @@ function App() {
     // <ReactColorPicker/>
     // <ReactCreditCard />
     // <ReactDatepicker/>
-    <ReactVideoPlayer />
+    // <ReactVideoPlayer />
+    <ReactSpinner />
   );
 }
 
