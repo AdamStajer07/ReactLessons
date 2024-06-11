@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Chart from 'chart.js/auto';
+import { CategoryScale } from 'chart.js';
+Chart.register(CategoryScale);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

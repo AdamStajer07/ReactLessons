@@ -1,4 +1,7 @@
+import DoughnutChart from './DoughnutChart';
+import BarChart from './component/BarChart';
 import Icons from './component/Icons';
+import LineChart from './component/LineChart';
 import ReactColorPicker from './component/ReactColorPicker';
 import ReactCountup from './component/ReactCountup';
 import ReactCreditCard from './component/ReactCreditCard';
@@ -23,7 +26,10 @@ function App() {
     // <ReactCreditCard />
     // <ReactDatepicker/>
     // <ReactVideoPlayer />
-    <ReactSpinner />
+    // <ReactSpinner />
+    <LineChart />
+    // <BarChart />
+    // <DoughnutChart />
   );
 }
 
