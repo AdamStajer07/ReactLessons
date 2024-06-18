@@ -2,16 +2,20 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { ordered } from '../redux/itemSlice'
 import { useNavigate, useParams } from 'react-router-dom'
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
+toast.configure()
 function SingleProduct() {
     const navigate = useNavigate() 
     const dispatch = useDispatch()
     const {itemName, itemValue} = useParams()
-    
     const [count, setCount] = useState(1)
-  
+
+    
     const eventHandling = () => {
       dispatch(ordered({name: itemName, value: itemValue, count: count}))
+      toast.success(`Add ${itemName} to cart`, {position: toast.POSITION.TOP_CENTER, autoClose: 1000})
       navigate('/cart')
     }
     
