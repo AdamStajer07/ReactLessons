@@ -1,6 +1,6 @@
 import React from 'react'
-import MainTemplate from './MainTemplate'
-import ImgWithTextTemplate from './ImgWithTextTemplate'
+import MainTemplate from '../Templates/MainTemplate'
+import ImgWithTextTemplate from '../Templates/ImgWithTextTemplate'
 
 function Home() {
   return (
