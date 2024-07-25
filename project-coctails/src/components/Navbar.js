@@ -4,19 +4,19 @@ import logo from '../logo.svg'
 
 const Navbar = () => {
   return (
-    <nav className='navbar'>
-      <div className='nav-center'>
+    <nav className='bg-white h-20 flex items-center border-b-2 border-lime-800 shadow-md'>
+      <div className='flex justify-between items-center w-10/12 max-w-full my-0 mx-auto'>
         <Link to="/">
-          <img src={logo} className='logo'/>
+          <img src={logo} alt={logo} className='w-48'/>
         </Link>
-        <ul className='nav-links'>
+        <ul className='flex items-center'>
           <li>
-            <Link to="/">
+            <Link to="/" className="capitalize font-bold mr-2 tracking-wide text-lg py-1 px-2 transition-all hover:text-lime-800">
               Home
             </Link>
           </li>
           <li>
-            <Link to="/about">
+            <Link to="/about" className="capitalize font-bold mr-2 tracking-wide text-lg py-1 px-2 transition-all hover:text-lime-800">
               About
             </Link>
           </li>
