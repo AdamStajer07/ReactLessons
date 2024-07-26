@@ -1,30 +1,31 @@
-import { useEffect, useState } from "react";
-import axios from 'axios'
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import LogIn from "./pages/LogIn";
+import LogOut from "./pages/LogOut";
+import { useGlobalContext } from "./context";
+import { useEffect } from "react";
+import Delete from "./pages/Delete";
+import Update from "./pages/Update";
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
+
+toast.configure()
 function App() {
-  const [users, setUsers] = useState([])
-
+  const {getSessionData} = useGlobalContext()
   useEffect(()=>{
-    const fetchAllUsers = async () => {
-      try {
-        const res = await axios.get('http://localhost:8800/users')
-        console.log(res)
-        setUsers(res.data)
-      }
-      catch(err) {
-        console.log(err)
-      }
-    }
-    fetchAllUsers()
-  }, [])
+    getSessionData()
+  },[])
   return (
     <div className="App">
       <Routes>
         <Route path='/' element={<Home/>} />
-        <Route path="/sign-up" element={<SignUp/>}/>
+        <Route path="/sign-in" element={<SignIn/>}/>
+        <Route path="/log-in" element={<LogIn/>}/>
+        <Route path="/log-out" element={<LogOut/>}/>
+        <Route path="/delete/:id" element={<Delete/>} />
+        <Route path="/update/:id" element={<Update />}/>
       </Routes>
     </div>
   );

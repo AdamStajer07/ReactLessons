@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useGlobalContext } from '../context'
-import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function Home() {
-    const [users, setUsers] = useState([])
+  const {globalData} = useGlobalContext()
+  const navigate = useNavigate()
 
   useEffect(()=>{
-    const fetchAllUsers = async () => {
-      try {
-        const res = await axios.get('http://localhost:8800/users')
-        console.log(res)
-        setUsers(res.data)
-      }
-      catch(err) {
-        console.log(err)
-      }
+    if(localStorage.getItem('status') !== 'success') {
+      navigate('/log-in')
     }
-    fetchAllUsers()
   }, [])
+
+  const GreetUser = () => {
+    const {name, surname} = globalData
+    return <h1>Hello {name+' '+surname}</h1>
+  }
+  
   return (
     <div>
-        {users.map(user => {
-            const {id, name, surname, mail, password} = user
-            return <div key={id}>{name}</div>
-        })}
+      <GreetUser />
+      <button onClick={()=>navigate('/log-out')}>Log-out</button>
+      <br></br>
+      <button onClick={()=>navigate(`/update/${globalData.id}`)}>Change data</button>
+      <br></br>
+      <br></br>
+      <button onClick={()=>navigate(`/delete/${globalData.id}`)}>Delete account</button>
     </div>
   )
 }
