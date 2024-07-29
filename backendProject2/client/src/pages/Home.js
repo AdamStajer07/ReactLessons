@@ -20,12 +20,7 @@ function Home() {
   return (
     <div>
       <GreetUser />
-      <button onClick={()=>navigate('/log-out')}>Log-out</button>
-      <br></br>
-      <button onClick={()=>navigate(`/update/${globalData.id}`)}>Change data</button>
-      <br></br>
-      <br></br>
-      <button onClick={()=>navigate(`/delete/${globalData.id}`)}>Delete account</button>
+      <button onClick={()=>navigate('/profile')}>Your profile</button>
     </div>
   )
 }

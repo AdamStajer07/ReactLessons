@@ -21,7 +21,8 @@ function LogIn() {
         try {
             const res = await axios.post('http://localhost:8800/login', data)
             if(res.data.status === 'fail') {
-                notify()
+                toast.error('Wrong log-in data', {position: toast.POSITION.TOP_CENTER, autoClose: 500})
+                setData({mail: '', password: ''})
             }
             else {
                 setGlobalData(res.data)
@@ -37,11 +38,6 @@ function LogIn() {
         catch(err) {
             console.log(err)
         }
-    }
-    
-    const notify = () => {
-        toast.error('Wrong log-in data', {position: toast.POSITION.TOP_CENTER, autoClose: 500})
-        setData({mail: '', password: ''})
     }
     
     const signIn = e => {

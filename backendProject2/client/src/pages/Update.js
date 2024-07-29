@@ -22,7 +22,9 @@ function Update() {
         try {
             await axios.put(`http://localhost:8800/update/${id}`, globalData)
             toast.success('Zmieniono dane', {position: toast.POSITION.TOP_CENTER, autoClose: 500})
-            navigate('/')
+            setTimeout(() => {
+              navigate('/')
+            }, 200);
         }
         catch(err) {
             console.log(err)
@@ -34,7 +36,6 @@ function Update() {
         <form>
             <input type='text' name='name' value={name} onChange={handleChange} />
             <input type='text' name='surname' value={surname} onChange={handleChange} />
-            <input type='text' name='mail' value={mail} onChange={handleChange} />
             <input type='text' name='password' value={password} onChange={handleChange} />
           <button onClick={handleClick}>Update</button>
         </form>

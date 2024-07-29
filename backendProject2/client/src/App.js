@@ -9,6 +9,7 @@ import Delete from "./pages/Delete";
 import Update from "./pages/Update";
 import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Profile from "./pages/Profile";
 
 
 toast.configure()
@@ -26,6 +27,7 @@ function App() {
         <Route path="/log-out" element={<LogOut/>}/>
         <Route path="/delete/:id" element={<Delete/>} />
         <Route path="/update/:id" element={<Update />}/>
+        <Route path="/profile" element={<Profile />}/>
       </Routes>
     </div>
   );
