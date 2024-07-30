@@ -1,25 +1,24 @@
 import React, { useEffect } from 'react'
 import { useGlobalContext } from '../context'
 import { useNavigate } from 'react-router-dom'
+import Finance from '../components/Finance'
+import { toast } from 'react-toastify'
 
 function Home() {
-  const {globalData} = useGlobalContext()
+  const {globalData, getSessionData} = useGlobalContext()
   const navigate = useNavigate()
 
   useEffect(()=>{
+    getSessionData()
     if(localStorage.getItem('status') !== 'success') {
       navigate('/log-in')
+      toast.warn('Please log in to your account')
     }
   }, [])
-
-  const GreetUser = () => {
-    const {name, surname} = globalData
-    return <h1>Hello {name+' '+surname}</h1>
-  }
   
   return (
     <div>
-      <GreetUser />
+      <Finance />
       <button onClick={()=>navigate('/profile')}>Your profile</button>
     </div>
   )

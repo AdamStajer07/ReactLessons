@@ -10,14 +10,11 @@ import Update from "./pages/Update";
 import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Profile from "./pages/Profile";
+import Finance from "./components/Finance";
 
 
 toast.configure()
 function App() {
-  const {getSessionData} = useGlobalContext()
-  useEffect(()=>{
-    getSessionData()
-  },[])
   return (
     <div className="App">
       <Routes>

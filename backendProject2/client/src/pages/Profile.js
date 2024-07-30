@@ -5,13 +5,13 @@ import {toast} from 'react-toastify'
 
 function Profile() {
     const {globalData} = useGlobalContext()
-    const {id, name, surname, mail, password} = globalData
+    const {id, name, surname} = globalData
     const navigate = useNavigate()
 
     useEffect(()=>{
         if(localStorage.getItem('status') !== 'success') {
           navigate('/log-in')
-        toast.warn('Please log in to your ')
+          toast.warn('Please log in to your account')
         }
       }, [])
 

@@ -72,6 +72,22 @@ app.put('/update/:id', (req, res) => {
     })
 })
 
+app.get('/finance/select/:id', (req, res) => {
+    const q = `SELECT * FROM finance WHERE id_user = ${req.params.id}`
+    db.query(q, (err, data) => {
+        if (err) return res.json(err);
+        return res.json(data)
+    })
+})
+
+app.post('/finance/add/:id', (req, res) => {
+    const q = `INSERT INTO finance (id_user, title, sum) VALUES ("${req.body.id}", "${req.body.title}", "${req.body.sum}")`
+    db.query(q, (err, data) => {
+        if(err) return res.json(err)
+        return res.json('Add element to database')
+    })
+})
+
 app.listen(8800, () => {
     console.log('Connected to backend')
 })
