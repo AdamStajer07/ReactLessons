@@ -5,12 +5,13 @@ import Finance from '../components/Finance'
 import { toast } from 'react-toastify'
 
 function Home() {
-  const {globalData, getSessionData} = useGlobalContext()
+  const {getSessionData} = useGlobalContext()
+  const {status} = getSessionData()
   const navigate = useNavigate()
 
   useEffect(()=>{
     getSessionData()
-    if(localStorage.getItem('status') !== 'success') {
+    if(status !== 'success') {
       navigate('/log-in')
       toast.warn('Please log in to your account')
     }

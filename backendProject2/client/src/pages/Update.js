@@ -1,26 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useGlobalContext } from '../context'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 function Update() {
-    const {globalData, setGlobalData} = useGlobalContext()
-    const {id, name, surname, mail, password} = globalData
+    const {getSessionData, setSessionData} = useGlobalContext()
+    const {status, id, name, surname, mail, password} = getSessionData()
+    const [data, setData] = useState({status, id: id, name: name, surname: surname, mail: mail, password: password})
     const navigate = useNavigate()
 
     const handleChange = e => {
-        setGlobalData(prev=>({...prev, [e.target.name]: e.target.value}))
+        setData(prev=>({...prev, [e.target.name]: e.target.value}))
     }
 
     const handleClick = async e => {
         e.preventDefault()
-        localStorage.setItem('name', name)
-        localStorage.setItem('surname', surname)
-        localStorage.setItem('mail', mail)
-        localStorage.setItem('password', password)
+        setSessionData(data)
         try {
-            await axios.put(`http://localhost:8800/update/${id}`, globalData)
+            await axios.put(`http://localhost:8800/update/${id}`, getSessionData())
             toast.success('Zmieniono dane', {position: toast.POSITION.TOP_CENTER, autoClose: 500})
             setTimeout(() => {
               navigate('/')
@@ -34,9 +32,9 @@ function Update() {
   return (
     <div>
         <form>
-            <input type='text' name='name' value={name} onChange={handleChange} />
-            <input type='text' name='surname' value={surname} onChange={handleChange} />
-            <input type='text' name='password' value={password} onChange={handleChange} />
+            <input type='text' name='name' value={data.name} onChange={handleChange} />
+            <input type='text' name='surname' value={data.surname} onChange={handleChange} />
+            <input type='text' name='password' value={data.password} onChange={handleChange} />
           <button onClick={handleClick}>Update</button>
         </form>
     </div>

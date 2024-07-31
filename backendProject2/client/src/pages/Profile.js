@@ -4,8 +4,8 @@ import { useGlobalContext } from '../context'
 import {toast} from 'react-toastify'
 
 function Profile() {
-    const {globalData} = useGlobalContext()
-    const {id, name, surname} = globalData
+    const {getSessionData} = useGlobalContext()
+    const {id, name, surname} = getSessionData()
     const navigate = useNavigate()
 
     useEffect(()=>{

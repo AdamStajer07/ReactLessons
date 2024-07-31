@@ -5,7 +5,7 @@ import {toast} from 'react-toastify'
 import { useGlobalContext } from '../context'
 
 function LogIn() {
-    const {setGlobalData} = useGlobalContext()
+    const {setSessionData} = useGlobalContext()
     const [data, setData] = useState({
         mail: '',
         password: ''
@@ -25,13 +25,8 @@ function LogIn() {
                 setData({mail: '', password: ''})
             }
             else {
-                setGlobalData(res.data)
-                localStorage.setItem('status', res.data.status)
-                localStorage.setItem('id', res.data.id)
-                localStorage.setItem('name', res.data.name)
-                localStorage.setItem('surname', res.data.surname)
-                localStorage.setItem('mail', res.data.mail)
-                localStorage.setItem('password', res.data.password)
+                
+                setSessionData(res.data)
                 navigate('/')
             }
         }
