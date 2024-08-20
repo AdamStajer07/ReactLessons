@@ -16,15 +16,17 @@ function Profile() {
       }, [])
 
   return (
-    <div>
-        <h1>{name}, {surname}</h1>
+    <div className='m-1'>
+        <h1 className='flex justify-center text-5xl font-bold capitalize'>{name}, {surname}</h1>
         <br></br>
-        <button onClick={()=>navigate(`/update/${id}`)}>Change your data</button>
-        <br></br>
-        <button onClick={()=>navigate(`/log-out`)}>Log out</button>
-        <br></br>
-        <br></br>
-        <button onClick={()=>navigate(`/delete/${id}`)}>Delete account</button>
+        <div className='flex justify-center'>
+          <button onClick={()=>navigate(`/update/${id}`)} className='btn'>Change your data</button>
+          <br></br>
+          <button onClick={()=>navigate(`/log-out`)} className='btn'>Log out</button>
+          <br></br>
+          <br></br>
+          <button onClick={()=>navigate(`/delete/${id}`)} className='btn'>Delete account</button>
+        </div>
     </div>
   )
 }

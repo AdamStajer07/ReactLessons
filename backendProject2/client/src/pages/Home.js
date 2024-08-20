@@ -19,8 +19,10 @@ function Home() {
   
   return (
     <div>
-      <Finance />
-      <button onClick={()=>navigate('/profile')}>Your profile</button>
+      {/* <Finance /> */}
+      <div className='text-center'>
+        <button onClick={()=>navigate('/profile')} className='btn'>Your profile</button>
+      </div>
     </div>
   )
 }

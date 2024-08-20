@@ -23,13 +23,20 @@ app.get('/users', (req, res) => {
 })
 
 app.post('/signIn', (req, res) => {
-    const q = 'INSERT INTO user (`name`, `surname`, `mail`, `password`) VALUES (?)'
-    const values = [req.body.name, req.body.surname, req.body.mail, req.body.password]
-
-    db.query(q, [values], (err, data) => {
-        if (err) return res.json(err);
-        return res.json('Book has been created succesfully');
+    const findDuplicate = `SELECT * FROM user WHERE mail = ${req.body.mail}`
+    db.query(findDuplicate, (err, data) => {
+        if (err) return res.json({status: 'duplicate'});
+        else {
+            const q = 'INSERT INTO user (`name`, `surname`, `mail`, `password`) VALUES (?)'
+            const values = [req.body.name, req.body.surname, req.body.mail, req.body.password]
+        
+            db.query(q, [values], (err, data) => {
+                if (err) return res.json(err);
+                return res.json('User has been added succesfully');
+            })
+        }
     })
+
 })
 
 app.post('/login', (req, res) => {

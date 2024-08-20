@@ -19,7 +19,7 @@ function Update() {
         setSessionData(data)
         try {
             await axios.put(`http://localhost:8800/update/${id}`, getSessionData())
-            toast.success('Zmieniono dane', {position: toast.POSITION.TOP_CENTER, autoClose: 500})
+            toast.success('Change the data', {position: toast.POSITION.TOP_CENTER, autoClose: 500})
             setTimeout(() => {
               navigate('/')
             }, 200);
@@ -31,11 +31,14 @@ function Update() {
     
   return (
     <div>
-        <form>
-            <input type='text' name='name' value={data.name} onChange={handleChange} />
-            <input type='text' name='surname' value={data.surname} onChange={handleChange} />
-            <input type='text' name='password' value={data.password} onChange={handleChange} />
-          <button onClick={handleClick}>Update</button>
+        <form className='text-center m-1'>
+            <div className='flex justify-center'>
+              <input type='text' name='name' value={data.name} onChange={handleChange} className='input' />
+              <input type='text' name='surname' value={data.surname} onChange={handleChange} className='input' />
+              <input type='text' name='password' value={data.password} onChange={handleChange} className='input' />
+            </div>
+          <button onClick={handleClick} className='btn'>Update</button>
+          <button onClick={()=>navigate('/profile')} className='btn'>Back</button>
         </form>
     </div>
   )

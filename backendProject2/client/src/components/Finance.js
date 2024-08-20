@@ -7,7 +7,7 @@ function Finance() {
   const {id} = getSessionData()
   const [financeSum, setFinanceSum] = useState(0)
   const [addFinanceValue, setAddFinanceValue] = useState(0)
-
+  
   useEffect(() => {
     const fetchData = async ()=>{
       try {

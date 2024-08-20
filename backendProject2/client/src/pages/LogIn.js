@@ -27,7 +27,7 @@ function LogIn() {
             else {
                 
                 setSessionData(res.data)
-                navigate('/')
+                navigate('/profile')
             }
         }
         catch(err) {
@@ -42,12 +42,12 @@ function LogIn() {
     
   return (
     <div>
-        <form>
-            <input type='mail' placeholder='mail' name='mail' value={data.mail} onChange={handleChange} />
-            <input type='password' placeholder='password' name='password' value={data.password} onChange={handleChange} />
-            <button onClick={handleClick}>Log in</button>
+        <form className='text-center'>
+            <input type='mail' placeholder='mail' name='mail' value={data.mail} onChange={handleChange} className='input' />
+            <input type='password' placeholder='password' name='password' value={data.password} onChange={handleChange} className='input' />
+            <button onClick={handleClick} className='btn'>Log in</button>
             <div>
-                <button onClick={signIn}>SignIn</button>
+                <button onClick={signIn} className='btn'>SignIn</button>
             </div>
         </form>
     </div>
