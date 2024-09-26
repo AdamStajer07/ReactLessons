@@ -5,10 +5,10 @@ const url = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i='
 
 const SingleCocktail = () => {
   const {id} = useParams()
-  const [loading, setLoading] = React.useState(false)
-  const [coctail, setCoctail] = React.useState(null)
+  const [loading, setLoading] = useState(false)
+  const [coctail, setCoctail] = useState(null)
 
-  React.useEffect(()=>{
+  useEffect(()=>{
     setLoading(true)
     async function getCoctail() {
       try {
@@ -37,39 +37,39 @@ const SingleCocktail = () => {
     return <Loading/>
   }
   if(!coctail) {
-    return <h2 className='section-title'>no cocktail to display</h2>
+    return <h2 className='text-3xl font-bold capitalize tracking-wide text-center mb-14 mt-4'>no cocktail to display</h2>
   }
   
   const {name,image,category,info,glass,instructions,ingredients} = coctail
   return (
-    <section className='section cocktail-section'>
-      <Link to='/' className="btn btn-primary ">Back home</Link>
-      <h2 className='section-title'>{name}</h2>
-      <div className='drink'>
-        <img src={image} />
-        <div className='drink-info'>
-          <p>
-            <span className='drink-data'>name: </span>
+    <section className='py-20 w-10/12 max-w-full mx-auto text-center'>
+      <Link to='/' className="uppercase tracking-wide text-lime-800 border-b-2 border-lime-800 text-center transition-all cursor-pointer text-md bg-lime-800 rounded py-2 px-3 text-white hover:text-lime-800 hover:bg-lime-200">Back home</Link>
+      <h2 className='text-3xl font-bold capitalize tracking-wide text-center mb-14 mt-4'>{name}</h2>
+      <div className='w-10/12 max-w-full mx-auto md:grid md:grid-cols-5 md:gap-12 md:items-center'>
+        <img src={image} alt={image} className='rounded md:col-span-2' />
+        <div className='pt-8 text-left ml-2 md:col-span-3'>
+          <p className='font-bold capitalize leading-7'>
+            <span className='bg-lime-200 py-1 px-2 mr-2 rounded text-lime-800'>name: </span>
             {name}
           </p>
-          <p>
-            <span className='drink-data'>category: </span>
+          <p className='font-bold capitalize leading-7'>
+            <span className='bg-lime-200 py-1 px-2 mr-2 rounded text-lime-800'>category: </span>
             {category}
           </p>
-          <p>
-            <span className='drink-data'>info: </span>
+          <p className='font-bold capitalize leading-7'>
+            <span className='bg-lime-200 py-1 px-2 mr-2 rounded text-lime-800'>info: </span>
             {info}
           </p>
-          <p>
-            <span className='drink-data'>glass: </span>
+          <p className='font-bold capitalize leading-7'>
+            <span className='bg-lime-200 py-1 px-2 mr-2 rounded text-lime-800'>glass: </span>
             {glass}
           </p>
-          <p>
-            <span className='drink-data'>instructions: </span>
+          <p className='font-bold capitalize leading-7'>
+            <span className='bg-lime-200 py-1 px-2 mr-2 rounded text-lime-800'>instructions: </span>
             {instructions}
           </p>
-          <p>
-            <span className='drink-data'>ingredients: </span>
+          <p className='font-bold capitalize leading-7'>
+            <span className='bg-lime-200 py-1 px-2 mr-2 rounded text-lime-800'>ingredients: </span>
             {ingredients.map((item,index)=>{
               return item ? <span key={index}>{item}</span> : null
             })}
