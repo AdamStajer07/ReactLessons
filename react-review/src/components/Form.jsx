@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Item from './Item'
 
 function Form() {
     const [value, setValue] = useState("")
+    const [lengthOfList, setLengthOfList] = useState(0)
     const [list, setList] = useState([])
+
+    useEffect(() => {
+        setLengthOfList(list.length)
+    }, [list])
 
     const addItem = () => {
         setList([...list, value])
@@ -20,9 +25,12 @@ function Form() {
     <>
         <input value={value} onChange={e=>setValue(e.target.value)} />
         <button onClick={addItem}>Dodaj</button>
+        {
+            lengthOfList != 0 ? <h2>Ilość elementów: {lengthOfList}</h2> : <h2>Brak elementów</h2>
+        }
         {list.map((item, index) => {
-            return <div key={index} onClick={()=>deleteItem(index)}>
-                <Item  idx={index} name={item}  />
+            return <div key={index} onClick={()=>deleteItem(index)} className='item' >
+                <Item  num={index+1} name={item} />
             </div>
         })}
     </>

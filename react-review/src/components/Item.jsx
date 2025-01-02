@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Item({name, idx}) {
+function Item({name, num}) {
   return (
     <>
-        {`${idx}. ${name}`}
+        <b>{num}. </b>{name}
     </>
   )
 }
